@@ -7,7 +7,8 @@
     },
     "autoload": {
         "psr-0": {
-            "UNL_": ["src", "lib/php", "tests/src"]
+            "UNL_": ["src", "lib/php", "tests/src"],
+            "Savvy": "vendor/tommyneu/savvy/src"
         }
     },
     "repositories": [
@@ -27,6 +28,18 @@
         {
             "type": "vcs",
             "url": "https://github.com/unl/RegExpRouter.git"
+        },
+        {
+          "type":"package",
+          "package": {
+            "name": "tommyneu/savvy",
+            "version": "master",
+            "source": {
+              "url": "https://github.com/tommyneu/Savvy.git",
+              "type": "git",
+              "reference": "master"
+            }
+          }
         }
     ],
     "require": {
@@ -34,7 +47,7 @@
       "unl/unl_cache_lite": "0.1.*",
       "unl/reg-exp-router": "0.1.*",
       "pear/http_request2": "2.2.*",
-      "saltybeagle/savvy": "0.8.1",
+      "tommyneu/savvy": "dev-master",
       "saltybeagle/savvy_turbo": "0.1.*",
       "phpunit/phpunit": "~4.3",
       "ezyang/htmlpurifier": "~4.6",
