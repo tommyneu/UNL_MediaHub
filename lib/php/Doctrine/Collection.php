@@ -31,7 +31,7 @@
  * @version     $Revision: 7686 $
  * @author      Konsta Vesterinen <kvesteri@cc.hut.fi>
  */
-class Doctrine_Collection extends Doctrine_Access implements Countable, IteratorAggregate, Serializable
+class Doctrine_Collection extends Doctrine_Access implements Countable, IteratorAggregate
 {
     /**
      * @var array $data                     an array containing the records of this collection
@@ -420,7 +420,7 @@ class Doctrine_Collection extends Doctrine_Access implements Countable, Iterator
      *
      * @return integer
      */
-    public function count()
+    public function count():int
     {
         return count($this->data);
     }
@@ -1024,6 +1024,7 @@ class Doctrine_Collection extends Doctrine_Access implements Countable, Iterator
      *
      * @return Iterator
      */
+    #[\ReturnTypeWillChange]
     public function getIterator()
     {
         $data = $this->data;

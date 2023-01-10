@@ -120,7 +120,7 @@ abstract class UNL_MediaHub_List implements Countable
      * 
      * @return int
      */
-    function count()
+    function count():int
     {
         return $this->total;
     }

@@ -471,7 +471,7 @@ class Doctrine_Table extends Doctrine_Configurable implements Countable
                             break;
                         }
 
-                        $e2 = explode(':', $option);
+                        $e2 = explode(':', $option ?? '');
 
                         switch (strtolower($e2[0])) {
                             case 'autoincrement':
@@ -1122,13 +1122,13 @@ class Doctrine_Table extends Doctrine_Configurable implements Countable
         }
 
         if ( ! is_array($orderBy)) {
-            $e1 = explode(',', $orderBy);
+            $e1 = explode(',', $orderBy ?? '');
         } else {
             $e1 = $orderBy;
         }
         $e1 = array_map('trim', $e1);
         foreach ($e1 as $k => $v) {
-            $e2 = explode(' ', $v);
+            $e2 = explode(' ', $v ?? '');
             if ($columnNames) {
                 $e2[0] = $this->getColumnName($e2[0]);
             }
@@ -1286,7 +1286,7 @@ class Doctrine_Table extends Doctrine_Configurable implements Countable
     public function setColumn($name, $type = null, $length = null, $options = array(), $prepend = false)
     {
         if (is_string($options)) {
-            $options = explode('|', $options);
+            $options = explode('|', $options ?? '');
         }
 
         foreach ($options as $k => $option) {
@@ -1302,9 +1302,9 @@ class Doctrine_Table extends Doctrine_Configurable implements Countable
         if (stripos($name, ' as '))
         {
             if (strpos($name, ' as ')) {
-                $parts = explode(' as ', $name);
+                $parts = explode(' as ', $name ?? '');
             } else {
-                $parts = explode(' AS ', $name);
+                $parts = explode(' AS ', $name ?? '');
             }
 
             if (count($parts) > 1) {
@@ -1552,7 +1552,7 @@ class Doctrine_Table extends Doctrine_Configurable implements Countable
         $queryRegistry = Doctrine_Manager::getInstance()->getQueryRegistry();
 
         if (strpos($queryKey, '/') !== false) {
-            $e = explode('/', $queryKey);
+            $e = explode('/', $queryKey ?? '');
 
             return $queryRegistry->get($e[1], $e[0]);
         }
@@ -1593,7 +1593,7 @@ class Doctrine_Table extends Doctrine_Configurable implements Countable
 
         // Check for possible cross-access
         if ( ! is_array($name) && strpos($name, '/') !== false) {
-            list($ns, $m) = explode('/', $name);
+            list($ns, $m) = explode('/', $name ?? '');
         }
 
         // Define query to be used
@@ -1946,7 +1946,7 @@ class Doctrine_Table extends Doctrine_Configurable implements Countable
      *
      * @return integer number of records in the table
      */
-    public function count()
+    public function count():int
     {
         return $this->createQuery()->count();
     }
@@ -2067,7 +2067,7 @@ class Doctrine_Table extends Doctrine_Configurable implements Countable
                 $values = $this->_columns[$fieldName]['values'];
                 // Convert string to array
                 if (is_string($value)) {
-                    $value = explode(',', $value);
+                    $value = explode(',', $value ?? '');
                     $value = array_map('trim', $value);
                     $record->set($fieldName, $value);
                 }
@@ -2329,7 +2329,7 @@ class Doctrine_Table extends Doctrine_Configurable implements Countable
                     // don't do any casting here PHP INT_MAX is smaller than what the databases support
                 break;
                 case 'set':
-                    return explode(',', $value);
+                    return explode(',', $value ?? '');
                 break;
                 case 'boolean':
                     return (boolean) $value;
@@ -2820,7 +2820,7 @@ class Doctrine_Table extends Doctrine_Configurable implements Countable
             }
 
             $fieldName = $this->_resolveFindByFieldName($by);
-            $count = count(explode('Or', $by)) + (count(explode('And', $by)) - 1);
+            $count = count(explode('Or', $by ?? '')) + (count(explode('And', $by ?? '')) - 1);
             if (count($arguments) > $count)
             {
                 $hydrationMode = end($arguments);

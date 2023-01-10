@@ -31,7 +31,7 @@
  * @since       1.0
  * @version     $Revision: 7673 $
  */
-abstract class Doctrine_Record extends Doctrine_Record_Abstract implements Countable, IteratorAggregate, Serializable
+abstract class Doctrine_Record extends Doctrine_Record_Abstract implements Countable, IteratorAggregate
 {
     /**
      * STATE CONSTANTS
@@ -1867,7 +1867,7 @@ abstract class Doctrine_Record extends Doctrine_Record_Abstract implements Count
      *
      * @return integer          the number of columns in this record
      */
-    public function count()
+    public function count():int
     {
         return count($this->_data);
     }
@@ -2162,6 +2162,7 @@ abstract class Doctrine_Record extends Doctrine_Record_Abstract implements Count
      * implements IteratorAggregate interface
      * @return Doctrine_Record_Iterator     iterator through data
      */
+    #[\ReturnTypeWillChange]
     public function getIterator()
     {
         return new Doctrine_Record_Iterator($this);
