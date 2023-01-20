@@ -21,8 +21,8 @@ SET time_zone = "+00:00";
 -- Table structure for table `comments`
 --
 
-DROP TABLE IF EXISTS `comments`;
-CREATE TABLE `comments` (
+
+CREATE TABLE IF NOT EXISTS `comments` (
   `id` int(10) UNSIGNED NOT NULL,
   `media_id` int(10) UNSIGNED NOT NULL,
   `uid` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
@@ -36,8 +36,7 @@ CREATE TABLE `comments` (
 -- Table structure for table `feeds`
 --
 
-DROP TABLE IF EXISTS `feeds`;
-CREATE TABLE `feeds` (
+CREATE TABLE IF NOT EXISTS `feeds` (
   `id` int(10) UNSIGNED NOT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `description` longtext COLLATE utf8_unicode_ci,
@@ -58,8 +57,7 @@ CREATE TABLE `feeds` (
 -- Table structure for table `feed_has_media`
 --
 
-DROP TABLE IF EXISTS `feed_has_media`;
-CREATE TABLE `feed_has_media` (
+CREATE TABLE IF NOT EXISTS `feed_has_media` (
   `feed_id` int(10) UNSIGNED NOT NULL,
   `media_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -70,8 +68,7 @@ CREATE TABLE `feed_has_media` (
 -- Table structure for table `feed_has_nselement`
 --
 
-DROP TABLE IF EXISTS `feed_has_nselement`;
-CREATE TABLE `feed_has_nselement` (
+CREATE TABLE IF NOT EXISTS `feed_has_nselement` (
   `feed_id` int(10) UNSIGNED NOT NULL,
   `xmlns` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `element` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
@@ -85,8 +82,7 @@ CREATE TABLE `feed_has_nselement` (
 -- Table structure for table `feed_has_subscription`
 --
 
-DROP TABLE IF EXISTS `feed_has_subscription`;
-CREATE TABLE `feed_has_subscription` (
+CREATE TABLE IF NOT EXISTS `feed_has_subscription` (
   `feed_id` int(10) UNSIGNED NOT NULL,
   `subscription_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -97,8 +93,7 @@ CREATE TABLE `feed_has_subscription` (
 -- Table structure for table `media`
 --
 
-DROP TABLE IF EXISTS `media`;
-CREATE TABLE `media` (
+CREATE TABLE IF NOT EXISTS `media` (
   `id` int(10) UNSIGNED NOT NULL,
   `url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `uidcreated` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -126,8 +121,7 @@ CREATE TABLE `media` (
 -- Table structure for table `media_has_nselement`
 --
 
-DROP TABLE IF EXISTS `media_has_nselement`;
-CREATE TABLE `media_has_nselement` (
+CREATE TABLE IF NOT EXISTS `media_has_nselement` (
   `media_id` int(10) UNSIGNED NOT NULL,
   `xmlns` varchar(10) NOT NULL,
   `element` varchar(100) NOT NULL,
@@ -141,8 +135,7 @@ CREATE TABLE `media_has_nselement` (
 -- Table structure for table `media_text_tracks`
 --
 
-DROP TABLE IF EXISTS `media_text_tracks`;
-CREATE TABLE `media_text_tracks` (
+CREATE TABLE IF NOT EXISTS `media_text_tracks` (
   `id` int(10) UNSIGNED NOT NULL,
   `media_id` int(10) UNSIGNED NOT NULL,
   `datecreated` datetime DEFAULT NULL,
@@ -157,8 +150,7 @@ CREATE TABLE `media_text_tracks` (
 -- Table structure for table `media_text_tracks_files`
 --
 
-DROP TABLE IF EXISTS `media_text_tracks_files`;
-CREATE TABLE `media_text_tracks_files` (
+CREATE TABLE IF NOT EXISTS `media_text_tracks_files` (
   `id` int(10) UNSIGNED NOT NULL,
   `media_text_tracks_id` int(10) UNSIGNED NOT NULL,
   `datecreated` datetime DEFAULT NULL,
@@ -174,8 +166,7 @@ CREATE TABLE `media_text_tracks_files` (
 -- Table structure for table `media_views`
 --
 
-DROP TABLE IF EXISTS `media_views`;
-CREATE TABLE `media_views` (
+CREATE TABLE IF NOT EXISTS `media_views` (
   `id` int(10) UNSIGNED NOT NULL,
   `media_id` int(10) UNSIGNED NOT NULL,
   `datecreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -188,8 +179,7 @@ CREATE TABLE `media_views` (
 -- Table structure for table `permissions`
 --
 
-DROP TABLE IF EXISTS `permissions`;
-CREATE TABLE `permissions` (
+CREATE TABLE IF NOT EXISTS `permissions` (
   `id` int(10) UNSIGNED NOT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -200,8 +190,7 @@ CREATE TABLE `permissions` (
 -- Table structure for table `rev_orders`
 --
 
-DROP TABLE IF EXISTS `rev_orders`;
-CREATE TABLE `rev_orders` (
+CREATE TABLE IF NOT EXISTS `rev_orders` (
   `id` int(10) UNSIGNED NOT NULL,
   `media_text_tracks_id` int(10) UNSIGNED DEFAULT NULL,
   `media_id` int(10) UNSIGNED DEFAULT NULL,
@@ -222,8 +211,7 @@ CREATE TABLE `rev_orders` (
 -- Table structure for table `subscriptions`
 --
 
-DROP TABLE IF EXISTS `subscriptions`;
-CREATE TABLE `subscriptions` (
+CREATE TABLE IF NOT EXISTS `subscriptions` (
   `id` int(11) UNSIGNED NOT NULL,
   `filter_class` int(255) NOT NULL,
   `filter_option` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -237,8 +225,7 @@ CREATE TABLE `subscriptions` (
 -- Table structure for table `transcoding_jobs`
 --
 
-DROP TABLE IF EXISTS `transcoding_jobs`;
-CREATE TABLE `transcoding_jobs` (
+CREATE TABLE IF NOT EXISTS `transcoding_jobs` (
   `id` int(10) UNSIGNED NOT NULL,
   `media_id` int(10) UNSIGNED NOT NULL,
   `uid` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -256,8 +243,7 @@ CREATE TABLE `transcoding_jobs` (
 -- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE `users` (
+CREATE TABLE IF NOT EXISTS `users` (
   `uid` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `datecreated` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -268,8 +254,7 @@ CREATE TABLE `users` (
 -- Table structure for table `user_has_permission`
 --
 
-DROP TABLE IF EXISTS `user_has_permission`;
-CREATE TABLE `user_has_permission` (
+CREATE TABLE IF NOT EXISTS `user_has_permission` (
   `user_uid` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `permission_id` int(10) UNSIGNED NOT NULL,
   `feed_id` int(10) UNSIGNED NOT NULL
@@ -492,4 +477,16 @@ ALTER TABLE `rev_orders`
 ALTER TABLE `transcoding_jobs`
   ADD CONSTRAINT `transcoding_jobs_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `users` (`uid`) ON DELETE SET NULL,
   ADD CONSTRAINT `transcoding_jobs_ibfk_2` FOREIGN KEY (`media_id`) REFERENCES `media` (`id`) ON DELETE CASCADE;
+COMMIT;
+
+--
+-- Dumping data for table `permissions`
+--
+
+INSERT INTO `permissions` (`id`, `title`) VALUES
+(1, 'User Can Insert'),
+(2, 'User Can Update'),
+(3, 'User Can Delete'),
+(10, 'User Can Upload'),
+(20, 'User Can Add User');
 COMMIT;

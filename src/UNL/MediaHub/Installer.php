@@ -24,19 +24,6 @@ class UNL_MediaHub_Installer
         $messages = array();
 
         $messages[] = $this->exec_sql(file_get_contents(dirname(__FILE__).'/../../../data/mediahub.sql'), 'Initializing database structure');
-        $messages[] = $this->exec_sql(file_get_contents(dirname(__FILE__).'/../../../data/add_dateupdated.sql'), 'Add date updated', true);
-        $messages[] = $this->exec_sql(file_get_contents(dirname(__FILE__).'/../../../data/add_feed_image.sql'), 'Adding feed image support', true);
-        $messages[] = $this->exec_sql(file_get_contents(dirname(__FILE__).'/../../../data/add_featured_feed_fields.sql'), 'Adding featured feeds support', true);
-        $messages[] = $this->exec_sql(file_get_contents(dirname(__FILE__).'/../../../data/add_media_privacy.sql'), 'Adding media privacy settings', true);
-        $messages[] = $this->exec_sql(file_get_contents(dirname(__FILE__).'/../../../data/add_media_play_count.sql'), 'Adding media play count', true);
-        $messages[] = $this->exec_sql(file_get_contents(dirname(__FILE__).'/../../../data/add_media_poster.sql'), 'Adding media poster', true);
-        $messages[] = $this->exec_sql(file_get_contents(dirname(__FILE__).'/../../../data/add_media_uid.sql'), 'Adding uidcreated and uidupdated to media', true);
-        $messages[] = $this->exec_sql(file_get_contents(dirname(__FILE__).'/../../../data/add_permissions.sql'), 'Adding permissions table', true);
-        $messages[] = $this->exec_sql(file_get_contents(dirname(__FILE__).'/../../../data/add_media_views.sql'), 'Adding the media views table', true);
-        $messages[] = $this->exec_sql(file_get_contents(dirname(__FILE__).'/../../../data/add_media_text_tracks.sql'), 'Adding media text tracks table', true);
-        $messages[] = $this->exec_sql(file_get_contents(dirname(__FILE__).'/../../../data/media_text_tracks_dates.sql'), 'Fixing date fields', true);
-        $messages[] = $this->exec_sql(file_get_contents(dirname(__FILE__).'/../../../data/add_media_duration.sql'), 'Add media duration column', true);
-        $messages[] = $this->exec_sql(file_get_contents(dirname(__FILE__).'/../../../data/transcoding_jobs.sql'), 'Add transcoding job table', true);
         
         return $messages;
     }
