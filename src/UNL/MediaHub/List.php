@@ -21,6 +21,8 @@ abstract class UNL_MediaHub_List implements Countable
     public $first;
     
     public $last;
+
+    public $items;
     
     /**
      * The pager object

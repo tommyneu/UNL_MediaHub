@@ -122,35 +122,25 @@ a.action.delete:active {background-image:url('images/iconDelete.png');}
 	list-style:none;
 	padding:0;
 }
-#dcf-main #userList {
-    list-style:none;
-    padding:0;
-    padding:10px;
-}
 #dcf-main #userList li {
-    display:inline-block;
-    text-align:center;
-    padding: 0 10px 10px 0;
-    position:relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    width: 14ch;
 }
-#dcf-main #userList li .uid {
-    font-size:0.6em;
-    color: #a8a8a8;
-    display:block;  
+#dcf-main #userList li .userList_profile_image {
+    grid-column: 1;
+    grid-row: 1;
+    aspect-ratio: 1 / 1;
 }
-#dcf-main #userList li img {border: solid rgba(174, 167, 141, 0.21) 10px;display:block;margin-left:auto;margin-right:auto;}
-#dcf-main #userList li form {
-    position:absolute;
-    top:6px;
-    right:7px;
-    display:none;
-}
-#dcf-main #userList li:hover form {display:block;}
 
-#dcf-main #userList li form input[type='submit'] {
-    -webkit-box-shadow: -1px 1px 3px var(--b);
-    -moz-box-shadow: -1px 1px 3px var(--b);
-    box-shadow: -1px 1px 3px var(--b);
+#dcf-main #userList li .userList_name{
+    grid-column: 1;
+    grid-row: 2;
+}
+
+#dcf-main #userList li .userList_delete_form{
+    translate: 50% -50%;
 }
 
 #dcf-main .addData {
