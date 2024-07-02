@@ -1,25 +1,6 @@
 <?php
 $baseUrl = UNL_MediaHub_Controller::getURL();
 ?>
-<div class="dcf-bleed dcf-overflow-hidden dcf-bg-cover mh-search-container">
-    <div class="mh-search-bg-video">
-        <video class="dcf-d-block dcf-w-100%" id="video-player" preload="metadata" autoplay="autoplay"  loop="" muted>
-            <source src="<?php echo $baseUrl ?>templates/html/featured-video/blurdarklights.mp4" type="video/mp4">
-            <source src="<?php echo $baseUrl ?>templates/html/featured-video/blurdarklights.webm" type="video/webm">
-            <source src="<?php echo $baseUrl ?>templates/html/featured-video/blurdarklights.ogv" type="video/ogg">
-            Your browser does not support the video tag. I suggest you upgrade your browser.
-        </video>
-    </div>
-    <div class="dcf-absolute dcf-h-100% dcf-w-100% dcf-pin-top dcf-pin-left dcf-d-flex dcf-ai-center dcf-jc-center dcf-wrapper mh-search">
-        <form class="dcf-w-max-lg dcf-form dcf-form-controls-inline" method="get" action="<?php echo $baseUrl ?>search/">
-            <label class="unl-cream" for="q_app">Search MediaHub</label>
-            <div class="dcf-input-group">
-                <input class="dcf-bg-transparent unl-cream" id="q_app" name="q" type="text" required />
-                <input class="dcf-btn dcf-btn-primary" type="submit" value="Go" />
-            </div>
-        </form>
-    </div>
-</div>
 <?php
     $topMedia = $context->getTopMedia();
     if (count($topMedia) > 0):

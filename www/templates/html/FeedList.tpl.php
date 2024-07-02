@@ -30,17 +30,10 @@ if($context->options['orderby'] == 'datecreated'){
 <div class="dcf-bleed dcf-pt-6">
     <div class="dcf-wrapper dcf-pb-0">
         <div class="mh-list-header">
-            <div class="dcf-grid">
-                <div class="dcf-col-100% dcf-col-75%-start@sm">
-                    <h2><?php echo UNL_MediaHub::escape($label); ?></h2>
-                    <?php if (count($context->items) && $context->pager->getLastPage() > 1): ?>
-                        <p>Page <?php echo $context->pager->getPage() ?> of <?php echo $context->pager->getLastPage() ?></p>
-                    <?php endif; ?>
-                </div>
-                <div class="dcf-col-100% dcf-col-25%-end@sm">
-                    <?php echo $savvy->render($context->options['filter'], 'SearchBox.tpl.php'); ?>
-                </div>
-            </div>
+            <h2><?php echo UNL_MediaHub::escape($label); ?></h2>
+            <?php if (count($context->items) && $context->pager->getLastPage() > 1): ?>
+                <p>Page <?php echo $context->pager->getPage() ?> of <?php echo $context->pager->getLastPage() ?></p>
+            <?php endif; ?>
         </div>
     </div>
 </div>

@@ -709,6 +709,8 @@ class UNL_MediaHub_Controller
             }
         }
 
+        $page->maincontentarea .= $savvy->render(null, 'SearchBox.tpl.php');
+
         $page->maincontentarea .= $savvy->render($context->output);
 
         if (isset($siteNotice) && $siteNotice->display) {

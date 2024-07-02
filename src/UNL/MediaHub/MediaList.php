@@ -24,8 +24,10 @@ class UNL_MediaHub_MediaList extends UNL_MediaHub_List
         }
         
         $this->options = $options + $this->options;
-        $this->filterInputOptions();
-        $this->setUpFilter();
+        if (!isset($this->options['filter_preset']) || $this->options['filter_preset'] !== true) {
+            $this->filterInputOptions();
+            $this->setUpFilter();
+        }
         $this->run();
     }
 

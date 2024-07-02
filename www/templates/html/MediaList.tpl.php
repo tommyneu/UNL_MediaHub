@@ -30,31 +30,50 @@ if(!empty($context->options['f'])){
 };
 ?>
 
+<div class="dcf-tabs dcf-mt-6" id="search-results" hidden>
+    <h1 class="dcf-sr-only">Tab Group No UL</h1>
+    <ul>
+        <li><a href="#video-results">Videos</a></li>
+        <li><a href="#audio-results">Audio</a></li>
+        <li><a href="#channel-results">Channels</a></li>
+    </ul>
+    <section id="audio-results">
+        <?php echo $savvy->render($context, 'MediaList/Audio.tpl.php'); ?>
+    </section>
+    <section id="video-results">
+        <?php echo $savvy->render($context, 'MediaList/Video.tpl.php'); ?>
+    </section>
+    <section id="channel-results">
+        <?php echo $savvy->render($context, 'MediaList/Channel.tpl.php'); ?>
+    </section>
+</div>
+
+<script>
+    window.addEventListener('inlineJSReady', function() {
+        let search_results = document.getElementById('search-results')
+        search_results.addEventListener('ready', () => {
+            search_results.removeAttribute('hidden');
+        });
+        WDN.initializePlugin('tabs');
+    }, false);
+</script>
+
 <div class="dcf-bleed dcf-pt-6">
     <div class="dcf-wrapper dcf-pb-0">
         <div class="mh-list-header">
-            <div class="dcf-grid">
-                <div class="dcf-col-100% dcf-col-75%-start@sm">
-                    <?php if ($context->options['filter']->getType() == 'search'): ?>
-                        <h2>
-                            <span class="dcf-subhead">Search results for</span>
-                            <?php echo UNL_MediaHub::escape($context->options['filter']->getValue()) ?>
-                        </h2>
-                    <?php elseif ($context->options['filter']->getType() == 'feed'): ?>
-                        <h2><?php echo UNL_MediaHub::escape($label) ?></h2>
-                    <?php else: ?>
-                        <h2><?php echo UNL_MediaHub::escape($label) ?></h2>
-                    <?php endif; ?>
-                    <?php if (count($context->items) && $context->pager->getLastPage() > 1): ?>
-                        <p>Page <?php echo $context->pager->getPage() ?> of <?php echo $context->pager->getLastPage() ?></p>
-                    <?php endif; ?>
-                </div>
-                <div class="dcf-col-100% dcf-col-25%-end@sm">
-                    <?php if (in_array($context->options['filter']->getType(), array('search', 'browse'))): ?>
-                        <?php echo $savvy->render($context->options['filter'], 'SearchBox.tpl.php'); ?>
-                    <?php endif; ?>
-                </div>
-            </div>
+            <?php if ($context->options['filter']->getType() == 'search'): ?>
+                <h2>
+                    <span class="dcf-subhead">Search results for</span>
+                    <?php echo UNL_MediaHub::escape($context->options['filter']->getValue()) ?>
+                </h2>
+            <?php elseif ($context->options['filter']->getType() == 'feed'): ?>
+                <h2><?php echo UNL_MediaHub::escape($label) ?></h2>
+            <?php else: ?>
+                <h2><?php echo UNL_MediaHub::escape($label) ?></h2>
+            <?php endif; ?>
+            <?php if (count($context->items) && $context->pager->getLastPage() > 1): ?>
+                <p>Page <?php echo $context->pager->getPage() ?> of <?php echo $context->pager->getLastPage() ?></p>
+            <?php endif; ?>
         </div>
     </div>
 </div>
@@ -147,7 +166,15 @@ if(!empty($context->options['f'])){
                 </h2>
                 <ul class="mh-channel-buttons dcf-grid-full dcf-grid-halves@sm dcf-grid-thirds@md dcf-col-gap-vw dcf-row-gap-7">
                     <?php foreach ($feeds->items as $feed): ?>
-                        <li><a class="dcf-btn dcf-btn-secondary dcf-w-100% dcf-h-100%" href="<?php echo UNL_MediaHub_Controller::getURL($feed); ?>"><?php echo \UNL\Templates\Icons::get(\UNL\Templates\Icons::ICON_ROCKET, '{"size": 4}'); ?> <?php echo UNL_MediaHub::escape($feed->title) ?></a></li>
+                        <li>
+                            <a
+                                class="dcf-btn dcf-btn-secondary dcf-w-100% dcf-h-100%"
+                                href="<?php echo UNL_MediaHub_Controller::getURL($feed); ?>"
+                            >
+                                <?php echo \UNL\Templates\Icons::get(\UNL\Templates\Icons::ICON_ROCKET, '{"size": 4}'); ?>
+                                <?php echo UNL_MediaHub::escape($feed->title) ?>
+                            </a>
+                        </li>
                     <?php endforeach; ?>
                 </ul>
             </div>

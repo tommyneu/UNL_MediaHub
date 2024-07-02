@@ -13,7 +13,12 @@ $routes['/^developers\/?$/'] = 'UNL_MediaHub_Developers';
 $routes['/^transcode-manager\/?$/'] = 'UNL_MediaHub_TranscodeManager';
 $routes['/^transcode-manager\/command\/?$/'] = 'UNL_MediaHub_TranscodeManager';
 
-$routes['/^search\/(?P<q>.*)$/'] = 'UNL_MediaHub_MediaList';
+// These need to come before regular search
+$routes['/^search\/video\/(?P<q>.*)$/'] = 'UNL_MediaHub_Search_Video';
+$routes['/^search\/audio\/(?P<q>.*)$/'] = 'UNL_MediaHub_Search_Audio';
+$routes['/^search\/channel\/(?P<q>.*)$/'] = 'UNL_MediaHub_Search_Channel';
+
+$routes['/^search\/(?P<q>.*)$/'] = 'UNL_MediaHub_Search';
 
 $routes['/^tags\/(?P<t>.*)$/'] = 'UNL_MediaHub_MediaList';
 
@@ -49,7 +54,7 @@ $routes['/^logout\/?$/'] = 'logout';
 
 // Now all the ?view= routes
 $routes += array(
-    'search'  => 'UNL_MediaHub_MediaList',
+    'search'  => 'UNL_MediaHub_Search',
     'tags'    => 'UNL_MediaHub_MediaList',
     'default' => 'UNL_MediaHub_DefaultHomepage',
     'feeds'   => 'UNL_MediaHub_FeedList',
