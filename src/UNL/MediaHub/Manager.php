@@ -20,6 +20,7 @@ class UNL_MediaHub_Manager extends UNL_MediaHub_BaseController implements UNL_Me
         'editcaptiontrack' => 'UNL_MediaHub_Media_EditCaptionTrack',
         'captionorderdetails' => 'UNL_MediaHub_Media_CaptionOrderDetails',
         'exception' => 'UNL_MediaHub_Manager_Exception',
+        'createPlaylist' => 'UNL_MediaHub_Playlist_Create',
         );
     
     protected static $replacements = array();
