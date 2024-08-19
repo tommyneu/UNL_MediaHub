@@ -39,6 +39,7 @@ class UNL_MediaHub_Installer
         $messages[] = $this->exec_sql(file_get_contents(dirname(__FILE__).'/../../../data/transcoding_jobs.sql'), 'Add transcoding job table', true);
         $messages[] = $this->exec_sql(file_get_contents(dirname(__FILE__).'/../../../data/add_caption_upload.sql'), 'Add caption upload table', true);
         $messages[] = $this->exec_sql(file_get_contents(dirname(__FILE__).'/../../../data/add_ai_caption_jobs.sql'), 'Add AI caption job table', true);
+        $messages[] = $this->exec_sql(file_get_contents(dirname(__FILE__).'/../../../data/add_playlists.sql'), 'Add playlist table', true);
         
         return $messages;
     }
@@ -62,6 +63,8 @@ class UNL_MediaHub_Installer
         drop table if exists rev_orders;
         drop table if exists transcoding_jobs;
         drop table if exists transcription_jobs;
+        drop table if exists playlists;
+        drop table if exists playlist_has_media;
         SET FOREIGN_KEY_CHECKS = 1;
         ';
         
