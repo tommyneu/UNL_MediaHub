@@ -24,6 +24,8 @@ abstract class UNL_MediaHub_Models_BaseFeed extends Doctrine_Record
         $this->hasMany('UNL_MediaHub_Media',    array('local'    => 'feed_id',
                                                       'foreign'  => 'media_id',
                                                       'refClass' => 'UNL_MediaHub_Feed_Media'));
+        $this->hasMany('UNL_MediaHub_Playlist', array('local'    => 'id',
+                                                      'foreign'  => 'feed_id'));
         $this->hasMany('UNL_MediaHub_Feed_NamespacedElements_itunes',    array('local'    => 'id',
                                                                                'foreign'  => 'feed_id'));
         $this->hasMany('UNL_MediaHub_Feed_NamespacedElements_media',      array('local'    => 'id',
