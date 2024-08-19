@@ -106,6 +106,11 @@ class UNL_MediaHub_Feed extends UNL_MediaHub_Models_BaseFeed
          return new UNL_MediaHub_MediaList(array('filter'=>new UNL_MediaHub_MediaList_Filter_ByFeed($this))+$options); 
     }
 
+    public function getPlaylistList($options = array())
+    {
+         return new UNL_MediaHub_PlaylistList(array('filter'=>new UNL_MediaHub_PlaylistList_Filter_ByFeed($this))+$options); 
+    }
+
     /**
      * @param array $options
      * @return UNL_MediaHub_Feed_UserList
