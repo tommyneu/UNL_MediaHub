@@ -17,7 +17,7 @@ while (true) {
     if (!$db->isConnected()) {
         $db->connect();
     }
-    
+
     //Get all orders that have not been completed.
     $media_hub_jobs = new UNL_MediaHub_TranscriptionJobList(array('all_not_complete' => true));
 
@@ -33,7 +33,7 @@ while (true) {
             'order'=>'datecreated'));
 
         // Loop through those 5 videos and order low priority captions for them
-        // Low priority since we don't want to prevent new videos from 
+        // Low priority since we don't want to prevent new videos from
         foreach ($media_with_no_captions->items as $single_media) {
             try {
                 // Set up variable for transcriber
