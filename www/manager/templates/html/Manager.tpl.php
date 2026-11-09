@@ -53,7 +53,6 @@ $page->titlegraphic = $theme->renderThemeTemplate(null, 'titlegraphic.tpl.php');
 
 //header
 $page->addStyleSheet(UNL_MediaHub_Controller::getURL().'templates/html/css/all.css?v='.UNL_MediaHub_Controller::getVersion());
-$page->addStyleSheet(UNL_MediaHub_Controller::getURL().'templates/html/css/viewTransitions.css?v='.UNL_MediaHub_Controller::getVersion());
 $page->addStyleSheet(UNL_MediaHub_Manager::getURL().'templates/css/all_manager.css?v='.UNL_MediaHub_Controller::getVersion());
 $page->addStyleDeclaration(file_get_contents( dirname(__FILE__, 4) . '/templates/html/css/critical.css'));
 
