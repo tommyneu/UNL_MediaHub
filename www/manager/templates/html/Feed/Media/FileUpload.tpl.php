@@ -278,7 +278,7 @@ $page->addScriptDeclaration("
                 }
             }
             submitBtn.removeAttribute('disabled');
-            mediaErrorsContainer.style.display = 'block';
+            mediaErrorsContainer.classList.remove('dcf-d-none!');
         }
     });
 

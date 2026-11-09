@@ -224,7 +224,7 @@ var mediaDetails = function() {
                     }
                     submitBtn.removeAttribute('disabled');
                     deleteBtn.removeAttribute('disabled');
-                    mediaErrorsContainer.style.display = 'block';
+                    mediaErrorsContainer.classList.remove('dcf-d-none!');
                     mediaErrorsContainer.scrollIntoView();
                 }
             });

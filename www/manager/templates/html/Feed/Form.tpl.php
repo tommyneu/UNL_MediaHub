@@ -1231,7 +1231,7 @@ $page->addScriptDeclaration("
       }
       submitBtn.removeAttribute('disabled');
       deleteBtn.removeAttribute('disabled');
-      errorsContainer.style.display = 'block';
+      errorsContainer.classList.remove('dcf-d-none!');
       errorsContainer.scrollIntoView();
     }
   });
