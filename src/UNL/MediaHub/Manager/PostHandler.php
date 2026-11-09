@@ -125,13 +125,13 @@ class UNL_MediaHub_Manager_PostHandler
         case 'copy_and_edit_text_track_file':
             $this->handleCopyAndEditTextTrackFile();
             break;
-        case 'update_text_track_file';
+        case 'update_text_track_file':
             $this->handleUpdateTextTrackFile();
             break;
-        case 'save_review_ai_captions';
+        case 'save_review_ai_captions':
             $this->handleAICaptionReview();
             break;
-        case 'delete_text_track_file';
+        case 'delete_text_track_file':
             $this->handleDeleteTextTrackFile();
             break;
         case 'pull_amara':

@@ -26,7 +26,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>'.PHP_EOL;
         case 'image/png':
             $ext = '.png';
             break;
-        case 'image/jpeg';
+        case 'image/jpeg':
             $ext = '.jpg';
             break;
         default:
