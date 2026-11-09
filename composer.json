@@ -43,7 +43,7 @@
       "php": ">=5.5.0",
       "phpseclib/phpseclib": "3.0.7",
       "leodido/langcode-conv": "^0.2.0",
-      "ramsey/uuid": "^3.7",
+      "ramsey/uuid": "^4",
       "moontoast/math": "^1.1",
       "slim/csrf": "^0.8.2",
       "unl/php-dwt-parser": "^1.0.4",
