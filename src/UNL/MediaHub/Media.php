@@ -409,6 +409,29 @@ class UNL_MediaHub_Media extends UNL_MediaHub_Models_BaseMedia implements UNL_Me
             return false;
         }
 
+        // Try to get the local file's mime type first before doing the http request
+        $file_name = $this->getLocalFileName();
+        if ($file_name !== false) {
+            $good_to_return = false;
+
+            $content_type = mime_content_type($file_name);
+            if ($content_type !== false) {
+                $this->type = $content_type;
+                $good_to_return = true;
+            }
+            $content_length = filesize($file_name);
+            if ($content_length !== false) {
+                $this->length = $content_length;
+                $good_to_return = true;
+            }
+
+            // Make sure at least one of the values we were looking for came back
+            // If neither did then we resort to the old method
+            if ($good_to_return) {
+                return true;
+            }
+        }
+
         $context = stream_context_create(
             array(
                 'http'=>array(
